@@ -3,9 +3,14 @@ import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: 'Pricing - Affordable Return Deadline Tracking',
   description:
-    'Simple, affordable pricing for Return Window. Track your purchases and never miss a return deadline.',
+    'Simple, transparent pricing for Return Window. Free for 10 purchases, then just $1/month for founding members. No hidden fees, no ads.',
+  openGraph: {
+    title: 'Return Window Pricing - Start Free',
+    description:
+      'Track return deadlines free for your first 10 purchases. Founding member pricing: $1/month.',
+  },
 }
 
 const plans = [
@@ -196,7 +201,7 @@ export default function Pricing() {
               </ul>
 
               <Button
-                href="/"
+                href="/get-started"
                 color={plan.featured ? 'white' : 'emerald'}
                 className="mt-8"
               >
