@@ -14,7 +14,7 @@ const plans = [
   {
     name: 'Free',
     featured: false,
-    price: { monthly: '$0', annually: '$0' },
+    price: { monthly: '$0', annualMonthly: '$0', annualTotal: '$0' },
     description: 'Perfect for trying out Return Window.',
     limit: '10 purchases',
     limitNote: 'total',
@@ -32,7 +32,7 @@ const plans = [
   {
     name: 'Core',
     featured: true,
-    price: { monthly: '$1', annually: '$10' },
+    price: { monthly: '$1', annualMonthly: '$0.83', annualTotal: '$10' },
     description: 'Lock in founding member pricing forever.',
     limit: '50 purchases',
     limitNote: 'per month',
@@ -53,7 +53,7 @@ const plans = [
   {
     name: 'Premium',
     featured: false,
-    price: { monthly: '$10', annually: '$100' },
+    price: { monthly: '$10', annualMonthly: '$8.33', annualTotal: '$100' },
     description: 'For power shoppers and families.',
     limit: '500 purchases',
     limitNote: 'per month',
@@ -198,24 +198,36 @@ export function Pricing() {
                 {plan.description}
               </p>
 
-              <p
-                className={clsx(
-                  'mt-5 flex items-baseline text-4xl font-bold tracking-tight',
-                  plan.featured ? 'text-white' : 'text-gray-900'
-                )}
-              >
-                {annual ? plan.price.annually : plan.price.monthly}
-                {(annual ? plan.price.annually : plan.price.monthly) !== '$0' && (
-                  <span
+              <div className="mt-5">
+                <p
+                  className={clsx(
+                    'flex items-baseline text-4xl font-bold tracking-tight',
+                    plan.featured ? 'text-white' : 'text-gray-900'
+                  )}
+                >
+                  {annual ? plan.price.annualMonthly : plan.price.monthly}
+                  {(annual ? plan.price.annualMonthly : plan.price.monthly) !== '$0' && (
+                    <span
+                      className={clsx(
+                        'ml-1 text-sm font-normal',
+                        plan.featured ? 'text-gray-400' : 'text-gray-500'
+                      )}
+                    >
+                      /month
+                    </span>
+                  )}
+                </p>
+                {annual && plan.price.annualTotal !== '$0' && (
+                  <p
                     className={clsx(
-                      'ml-1 text-sm font-normal',
+                      'mt-1 text-sm',
                       plan.featured ? 'text-gray-400' : 'text-gray-500'
                     )}
                   >
-                    /{annual ? 'year' : 'month'}
-                  </span>
+                    billed annually at {plan.price.annualTotal}
+                  </p>
                 )}
-              </p>
+              </div>
 
               <div
                 className={clsx(
