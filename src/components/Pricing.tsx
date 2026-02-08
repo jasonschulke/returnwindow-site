@@ -6,6 +6,10 @@ import clsx from 'clsx'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 
+// Founding member spots - update this as users sign up
+const FOUNDING_SPOTS_TOTAL = 100
+const FOUNDING_SPOTS_CLAIMED = 0 // TODO: Fetch from database
+
 const plans = [
   {
     name: 'Free',
@@ -29,11 +33,12 @@ const plans = [
     name: 'Core',
     featured: true,
     price: { monthly: '$1', annually: '$10' },
-    description: 'For regular online shoppers.',
+    description: 'Lock in founding member pricing forever.',
     limit: '50 purchases',
     limitNote: 'per month',
+    isFoundingMember: true,
     button: {
-      label: 'Start Core',
+      label: 'Claim Your Spot',
       href: '/',
     },
     features: [
@@ -42,6 +47,7 @@ const plans = [
       'Personal dashboard',
       '100+ supported retailers',
       'Priority support',
+      'Founding member badge',
     ],
   },
   {
@@ -108,6 +114,21 @@ export function Pricing() {
             No hidden fees. No ads. Just straightforward pricing that scales
             with your shopping habits.
           </p>
+        </div>
+
+        {/* Founding Member Banner */}
+        <div className="mx-auto mt-8 max-w-xl">
+          <div className="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 p-4 text-center text-white shadow-lg">
+            <p className="text-sm font-medium uppercase tracking-wide opacity-90">
+              Founding Member Pricing
+            </p>
+            <p className="mt-1 text-2xl font-bold">
+              {FOUNDING_SPOTS_TOTAL - FOUNDING_SPOTS_CLAIMED} of {FOUNDING_SPOTS_TOTAL} spots left at $1/month
+            </p>
+            <p className="mt-1 text-sm opacity-90">
+              Lock in this price forever. After 100 members, Core is $2/month.
+            </p>
+          </div>
         </div>
 
         {/* Monthly/Annual Toggle */}
