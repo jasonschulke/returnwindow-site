@@ -126,7 +126,7 @@ export function Pricing() {
               {FOUNDING_SPOTS_TOTAL - FOUNDING_SPOTS_CLAIMED} of {FOUNDING_SPOTS_TOTAL} spots left at $1/month
             </p>
             <p className="mt-1 text-sm opacity-90">
-              Lock in this price forever. After 100 members, Core is $2/month.
+              Lock in this price forever. Price increases after 100 members.
             </p>
           </div>
         </div>
