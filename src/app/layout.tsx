@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
@@ -26,6 +27,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clsx('bg-gray-50 antialiased', inter.variable)}>
+      <head>
+        {/* Plausible Analytics - privacy-friendly, no cookies */}
+        <Script
+          defer
+          data-domain="returnwindow.app"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body>{children}</body>
     </html>
   )

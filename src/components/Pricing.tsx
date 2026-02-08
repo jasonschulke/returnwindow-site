@@ -20,7 +20,7 @@ const plans = [
     limitNote: 'total',
     button: {
       label: 'Get Started',
-      href: '/',
+      href: '/get-started',
     },
     features: [
       'Track up to 10 purchases',
@@ -39,7 +39,7 @@ const plans = [
     isFoundingMember: true,
     button: {
       label: 'Claim Your Spot',
-      href: '/',
+      href: '/get-started',
     },
     features: [
       'Track up to 50 purchases/month',
@@ -59,7 +59,7 @@ const plans = [
     limitNote: 'per month',
     button: {
       label: 'Start Premium',
-      href: '/',
+      href: '/get-started',
     },
     features: [
       'Track up to 500 purchases/month',
