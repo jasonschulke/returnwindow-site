@@ -170,16 +170,11 @@ export function Pricing() {
               key={plan.name}
               className={clsx(
                 'flex flex-col overflow-hidden rounded-3xl p-6 shadow-lg shadow-gray-900/5',
-                plan.featured ? 'order-first bg-gray-900 lg:order-none' : 'bg-white'
+                plan.featured ? 'order-first border-3 border-emerald-500 bg-white lg:order-none' : 'bg-white'
               )}
             >
               <div className="flex items-center justify-between">
-                <h3
-                  className={clsx(
-                    'text-lg font-semibold',
-                    plan.featured ? 'text-white' : 'text-gray-900'
-                  )}
-                >
+                <h3 className="text-lg font-semibold text-gray-900">
                   {plan.name}
                 </h3>
                 {plan.featured && (
@@ -189,85 +184,42 @@ export function Pricing() {
                 )}
               </div>
 
-              <p
-                className={clsx(
-                  'mt-2 text-sm',
-                  plan.featured ? 'text-gray-300' : 'text-gray-600'
-                )}
-              >
+              <p className="mt-2 text-sm text-gray-600">
                 {plan.description}
               </p>
 
               <div className="mt-5">
-                <p
-                  className={clsx(
-                    'flex items-baseline text-4xl font-bold tracking-tight',
-                    plan.featured ? 'text-white' : 'text-gray-900'
-                  )}
-                >
+                <p className="flex items-baseline text-4xl font-bold tracking-tight text-gray-900">
                   {annual ? plan.price.annualMonthly : plan.price.monthly}
                   {(annual ? plan.price.annualMonthly : plan.price.monthly) !== '$0' && (
-                    <span
-                      className={clsx(
-                        'ml-1 text-sm font-normal',
-                        plan.featured ? 'text-gray-400' : 'text-gray-500'
-                      )}
-                    >
+                    <span className="ml-1 text-sm font-normal text-gray-500">
                       /month
                     </span>
                   )}
                 </p>
                 {annual && plan.price.annualTotal !== '$0' && (
-                  <p
-                    className={clsx(
-                      'mt-1 text-sm',
-                      plan.featured ? 'text-gray-400' : 'text-gray-500'
-                    )}
-                  >
+                  <p className="mt-1 text-sm text-gray-500">
                     billed annually at {plan.price.annualTotal}
                   </p>
                 )}
               </div>
 
-              <div
-                className={clsx(
-                  'mt-6 rounded-lg p-4',
-                  plan.featured ? 'bg-emerald-500/20' : 'bg-emerald-50'
-                )}
-              >
-                <p
-                  className={clsx(
-                    'text-center text-lg font-semibold',
-                    plan.featured ? 'text-emerald-400' : 'text-emerald-600'
-                  )}
-                >
+              <div className="mt-6 rounded-lg bg-emerald-50 p-4">
+                <p className="text-center text-lg font-semibold text-emerald-600">
                   {plan.limit}
                 </p>
-                <p
-                  className={clsx(
-                    'text-center text-sm',
-                    plan.featured ? 'text-emerald-400/70' : 'text-emerald-600/70'
-                  )}
-                >
+                <p className="text-center text-sm text-emerald-600/70">
                   {plan.limitNote}
                 </p>
               </div>
 
               <ul
                 role="list"
-                className={clsx(
-                  'mt-6 flex-1 space-y-3 text-sm',
-                  plan.featured ? 'text-gray-300' : 'text-gray-600'
-                )}
+                className="mt-6 flex-1 space-y-3 text-sm text-gray-600"
               >
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <CheckIcon
-                      className={clsx(
-                        'h-6 w-6 flex-none',
-                        plan.featured ? 'text-emerald-400' : 'text-emerald-600'
-                      )}
-                    />
+                    <CheckIcon className="h-6 w-6 flex-none text-emerald-600" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -275,7 +227,7 @@ export function Pricing() {
 
               <Button
                 href={plan.button.href}
-                color={plan.featured ? 'white' : 'emerald'}
+                color="emerald"
                 className="mt-6"
               >
                 {plan.button.label}

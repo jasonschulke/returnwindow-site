@@ -22,9 +22,9 @@ const features = [
     icon: BellIcon,
   },
   {
-    name: '100+ Retailers',
+    name: 'Thousands of Retailers',
     description:
-      'Works with Amazon, Target, Walmart, Best Buy, Wayfair, Costco, and dozens more. We know each store\'s return policy.',
+      'Works with Amazon, Target, Walmart, Best Buy, Wayfair, Costco, and thousands more. We know each store\'s return policy.',
     icon: StoreIcon,
   },
 ]
@@ -128,7 +128,7 @@ export function PrimaryFeatures() {
                   <div className="pt-3">
                     <h4 className="text-lg font-semibold text-white">Make a purchase</h4>
                     <p className="mt-2 text-gray-400">
-                      Shop at any of the 100+ supported retailers. You'll receive an order confirmation email as usual.
+                      Shop at any of the thousands of supported retailers. You'll receive an order confirmation email as usual.
                     </p>
                   </div>
                 </div>

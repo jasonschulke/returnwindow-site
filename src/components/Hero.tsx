@@ -226,41 +226,88 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative mt-8 lg:col-span-7 lg:mt-0 xl:col-span-6">
-            <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
-              Works with thousands of retailers
-            </p>
-            <div className="relative mt-6 overflow-hidden">
-              {/* Gradient masks for smooth fade effect */}
-              <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-gray-50 to-transparent" />
-              <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-gray-50 to-transparent" />
-
-              <div className="flex animate-marquee-horizontal">
-                {/* Text-only retailer names for performance - no external images */}
-                {[
-                  'Amazon', 'Walmart', 'Apple', 'Target', 'Best Buy', 'Costco',
-                  'Nordstrom', 'Nike', 'Wayfair', 'Sephora', 'IKEA', 'REI',
-                  'H&M', 'Zara', 'Lululemon', 'Patagonia', 'Home Depot', 'Chewy',
-                ].map((name) => (
-                  <span key={name} className="mx-4 shrink-0 whitespace-nowrap text-sm font-medium text-gray-500">
-                    {name}
-                  </span>
-                ))}
-                {/* Duplicate set for seamless loop */}
-                {[
-                  'Amazon', 'Walmart', 'Apple', 'Target', 'Best Buy', 'Costco',
-                  'Nordstrom', 'Nike', 'Wayfair', 'Sephora', 'IKEA', 'REI',
-                  'H&M', 'Zara', 'Lululemon', 'Patagonia', 'Home Depot', 'Chewy',
-                ].map((name) => (
-                  <span key={`${name}-dup`} className="mx-4 shrink-0 whitespace-nowrap text-sm font-medium text-gray-500">
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </Container>
+
+      {/* Retailers section - full width and centered */}
+      <div className="mt-16 lg:mt-20">
+        <p className="text-center text-sm font-semibold text-gray-900">
+          Works with thousands of retailers
+        </p>
+        <div className="relative mt-6 overflow-hidden">
+          {/* Gradient masks for smooth fade effect */}
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-gray-50 to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-gray-50 to-transparent" />
+
+          <div className="flex animate-marquee-horizontal">
+            {[
+              { name: 'Amazon', domain: 'amazon.com' },
+              { name: 'Walmart', domain: 'walmart.com' },
+              { name: 'Apple', domain: 'apple.com' },
+              { name: 'Target', domain: 'target.com' },
+              { name: 'Best Buy', domain: 'bestbuy.com' },
+              { name: 'Costco', domain: 'costco.com' },
+              { name: 'Nordstrom', domain: 'nordstrom.com' },
+              { name: 'Nike', domain: 'nike.com' },
+              { name: 'Wayfair', domain: 'wayfair.com' },
+              { name: 'Sephora', domain: 'sephora.com' },
+              { name: 'IKEA', domain: 'ikea.com' },
+              { name: 'REI', domain: 'rei.com' },
+              { name: 'H&M', domain: 'hm.com' },
+              { name: 'Zara', domain: 'zara.com' },
+              { name: 'Lululemon', domain: 'lululemon.com' },
+              { name: 'Patagonia', domain: 'patagonia.com' },
+              { name: 'Home Depot', domain: 'homedepot.com' },
+              { name: 'Chewy', domain: 'chewy.com' },
+            ].map((retailer) => (
+              <span key={retailer.name} className="mx-6 flex shrink-0 items-center gap-2 whitespace-nowrap text-sm font-medium text-gray-600">
+                <img
+                  src={`https://www.google.com/s2/favicons?domain=${retailer.domain}&sz=32`}
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                  loading="lazy"
+                />
+                {retailer.name}
+              </span>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {[
+              { name: 'Amazon', domain: 'amazon.com' },
+              { name: 'Walmart', domain: 'walmart.com' },
+              { name: 'Apple', domain: 'apple.com' },
+              { name: 'Target', domain: 'target.com' },
+              { name: 'Best Buy', domain: 'bestbuy.com' },
+              { name: 'Costco', domain: 'costco.com' },
+              { name: 'Nordstrom', domain: 'nordstrom.com' },
+              { name: 'Nike', domain: 'nike.com' },
+              { name: 'Wayfair', domain: 'wayfair.com' },
+              { name: 'Sephora', domain: 'sephora.com' },
+              { name: 'IKEA', domain: 'ikea.com' },
+              { name: 'REI', domain: 'rei.com' },
+              { name: 'H&M', domain: 'hm.com' },
+              { name: 'Zara', domain: 'zara.com' },
+              { name: 'Lululemon', domain: 'lululemon.com' },
+              { name: 'Patagonia', domain: 'patagonia.com' },
+              { name: 'Home Depot', domain: 'homedepot.com' },
+              { name: 'Chewy', domain: 'chewy.com' },
+            ].map((retailer) => (
+              <span key={`${retailer.name}-dup`} className="mx-6 flex shrink-0 items-center gap-2 whitespace-nowrap text-sm font-medium text-gray-600">
+                <img
+                  src={`https://www.google.com/s2/favicons?domain=${retailer.domain}&sz=32`}
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                  loading="lazy"
+                />
+                {retailer.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -187,6 +187,14 @@ export default function RootLayout({
                 },
                 {
                   '@type': 'Question',
+                  name: "What is Apple's return policy?",
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: "Apple offers a 14-day return window for most products purchased from Apple.com or Apple Stores. iPhones purchased with a carrier contract may have different terms. Holiday purchases typically have extended return windows.",
+                  },
+                },
+                {
+                  '@type': 'Question',
                   name: 'How do I track my online purchase return deadlines?',
                   acceptedAnswer: {
                     '@type': 'Answer',
