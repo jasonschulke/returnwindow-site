@@ -85,6 +85,7 @@ export function Header() {
               <NavLink href="#how-it-works">How it Works</NavLink>
               <NavLink href="#pricing">Pricing</NavLink>
               <NavLink href="#faqs">FAQs</NavLink>
+              <NavLink href="/extensions/chrome">Extensions</NavLink>
             </div>
           </div>
           <div className="flex items-center gap-6">
@@ -137,6 +138,9 @@ export function Header() {
                               Pricing
                             </MobileNavLink>
                             <MobileNavLink href="#faqs">FAQs</MobileNavLink>
+                            <MobileNavLink href="/extensions/chrome">
+                              Extensions
+                            </MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-3">
                             <Button href="https://dashboard.returnwindow.app" variant="outline" color="gray" className="w-full justify-center">
