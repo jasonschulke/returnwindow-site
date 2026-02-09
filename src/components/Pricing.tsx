@@ -10,6 +10,16 @@ import { Container } from '@/components/Container'
 const FOUNDING_SPOTS_TOTAL = 100
 const FOUNDING_SPOTS_CLAIMED = 0 // TODO: Fetch from database
 
+// All features that align across plans
+const allFeatures = [
+  'Email reminders before deadlines',
+  'Personal dashboard',
+  'Thousands of supported retailers',
+  'Priority support',
+  'Founding member badge',
+  'Early access to new features',
+]
+
 const plans = [
   {
     name: 'Free',
@@ -22,11 +32,10 @@ const plans = [
       label: 'Get Started',
       href: '/get-started',
     },
-    features: [
-      'Track up to 10 purchases',
+    includedFeatures: [
       'Email reminders before deadlines',
       'Personal dashboard',
-      '100+ supported retailers',
+      'Thousands of supported retailers',
     ],
   },
   {
@@ -41,11 +50,10 @@ const plans = [
       label: 'Claim Your Spot',
       href: '/get-started',
     },
-    features: [
-      'Track up to 50 purchases/month',
+    includedFeatures: [
       'Email reminders before deadlines',
       'Personal dashboard',
-      '100+ supported retailers',
+      'Thousands of supported retailers',
       'Priority support',
       'Founding member badge',
     ],
@@ -61,11 +69,10 @@ const plans = [
       label: 'Start Premium',
       href: '/get-started',
     },
-    features: [
-      'Track up to 500 purchases/month',
+    includedFeatures: [
       'Email reminders before deadlines',
       'Personal dashboard',
-      '100+ supported retailers',
+      'Thousands of supported retailers',
       'Priority support',
       'Early access to new features',
     ],
@@ -83,6 +90,21 @@ function CheckIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         cx="12"
         cy="12"
         r="8.25"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        d="M6 18L18 6M6 6l12 12"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.5"
@@ -164,7 +186,7 @@ export function Pricing() {
           </div>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
           {plans.map((plan) => (
             <section
               key={plan.name}
@@ -173,6 +195,7 @@ export function Pricing() {
                 plan.featured ? 'order-first border-3 border-emerald-500 bg-white lg:order-none' : 'bg-white'
               )}
             >
+              {/* Header */}
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-gray-900">
                   {plan.name}
@@ -184,10 +207,7 @@ export function Pricing() {
                 )}
               </div>
 
-              <p className="mt-2 text-sm text-gray-600">
-                {plan.description}
-              </p>
-
+              {/* Price */}
               <div className="mt-5">
                 <p className="flex items-baseline text-4xl font-bold tracking-tight text-gray-900">
                   {annual ? plan.price.annualMonthly : plan.price.monthly}
@@ -197,13 +217,19 @@ export function Pricing() {
                     </span>
                   )}
                 </p>
-                {annual && plan.price.annualTotal !== '$0' && (
-                  <p className="mt-1 text-sm text-gray-500">
-                    billed annually at {plan.price.annualTotal}
-                  </p>
-                )}
+                <p className="mt-1 h-5 text-sm text-gray-500">
+                  {annual && plan.price.annualTotal !== '$0'
+                    ? `billed annually at ${plan.price.annualTotal}`
+                    : '\u00A0'}
+                </p>
               </div>
 
+              {/* Description */}
+              <p className="mt-4 h-12 text-sm text-gray-600">
+                {plan.description}
+              </p>
+
+              {/* Limit box */}
               <div className="mt-6 rounded-lg bg-emerald-50 p-4">
                 <p className="text-center text-lg font-semibold text-emerald-600">
                   {plan.limit}
@@ -213,16 +239,27 @@ export function Pricing() {
                 </p>
               </div>
 
-              <ul
-                role="list"
-                className="mt-6 flex-1 space-y-3 text-sm text-gray-600"
-              >
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <CheckIcon className="h-6 w-6 flex-none text-emerald-600" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
+              {/* Features - aligned across all cards */}
+              <ul role="list" className="mt-6 flex-1 space-y-4 text-sm">
+                {allFeatures.map((feature) => {
+                  const isIncluded = plan.includedFeatures.includes(feature)
+                  return (
+                    <li
+                      key={feature}
+                      className={clsx(
+                        'flex items-center gap-3',
+                        isIncluded ? 'text-gray-600' : 'text-gray-400'
+                      )}
+                    >
+                      {isIncluded ? (
+                        <CheckIcon className="h-5 w-5 flex-none text-emerald-600" />
+                      ) : (
+                        <XIcon className="h-5 w-5 flex-none text-gray-300" />
+                      )}
+                      <span>{feature}</span>
+                    </li>
+                  )
+                })}
               </ul>
 
               <Button
