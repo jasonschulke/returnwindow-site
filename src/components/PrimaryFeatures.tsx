@@ -10,6 +10,12 @@ const features = [
     icon: EmailIcon,
   },
   {
+    name: 'Dashboard & Timeline',
+    description:
+      'See all your purchases in one place with a visual timeline. Track deadlines, filter by status, and never lose sight of what needs attention.',
+    icon: DashboardIcon,
+  },
+  {
     name: 'Timely Reminders',
     description:
       'Get email reminders before your return window closes. Never miss a deadline because you forgot or got busy with life.',
@@ -22,6 +28,18 @@ const features = [
     icon: StoreIcon,
   },
 ]
+
+function DashboardIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
+      <rect x={4} y={4} width={24} height={24} rx={2} stroke="currentColor" strokeWidth={2} />
+      <path d="M4 12H28" stroke="currentColor" strokeWidth={2} />
+      <rect x={8} y={16} width={6} height={4} rx={1} fill="currentColor" />
+      <rect x={8} y={22} width={10} height={4} rx={1} fill="currentColor" fillOpacity={0.5} />
+      <rect x={18} y={16} width={6} height={4} rx={1} fill="currentColor" fillOpacity={0.3} />
+    </svg>
+  )
+}
 
 function EmailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -72,7 +90,7 @@ export function PrimaryFeatures() {
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <div
               key={feature.name}
@@ -132,7 +150,29 @@ export function PrimaryFeatures() {
                     3
                   </div>
                   <div className="pt-3">
-                    <h4 className="text-lg font-semibold text-white">Get reminded</h4>
+                    <h4 className="text-lg font-semibold text-white">Track in your dashboard</h4>
+                    <p className="mt-2 text-gray-400">
+                      See all your purchases with a deadline timeline. Filter by status, check which items need attention soon.
+                    </p>
+                    {/* Mini purchase card preview */}
+                    <div className="mt-4 max-w-xs">
+                      <div className="rounded-lg border-l-4 border-amber-500 bg-gray-800/50 p-3">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium text-white">Amazon</span>
+                          <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-xs font-medium text-amber-400">5 days left</span>
+                        </div>
+                        <div className="mt-1 text-xs text-gray-500">2 items · $89.99</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative flex items-start gap-6">
+                  <div className="relative z-10 flex h-16 w-16 flex-none items-center justify-center rounded-full bg-emerald-500 text-2xl font-bold text-white">
+                    4
+                  </div>
+                  <div className="pt-3">
+                    <h4 className="text-lg font-semibold text-white">Get reminded & decide</h4>
                     <p className="mt-2 text-gray-400">
                       We'll email you before your return window closes. Keep items you love, return the rest stress-free.
                     </p>

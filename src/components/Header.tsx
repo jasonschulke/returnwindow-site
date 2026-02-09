@@ -138,7 +138,10 @@ export function Header() {
                             </MobileNavLink>
                             <MobileNavLink href="#faqs">FAQs</MobileNavLink>
                           </div>
-                          <div className="mt-8">
+                          <div className="mt-8 flex flex-col gap-3">
+                            <Button href="https://dashboard.returnwindow.app" variant="outline" color="gray" className="w-full justify-center">
+                              Dashboard
+                            </Button>
                             <Button href="#get-started" color="emerald" className="w-full justify-center">
                               Get Started Free
                             </Button>
@@ -150,7 +153,10 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <div className="hidden lg:block">
+            <div className="hidden lg:flex lg:items-center lg:gap-3">
+              <Button href="https://dashboard.returnwindow.app" variant="outline" color="gray">
+                Dashboard
+              </Button>
               <Button href="#get-started" color="emerald">
                 Get Started Free
               </Button>

@@ -9,13 +9,13 @@ export function Footer() {
       <Container>
         <div className="flex flex-col items-start justify-between gap-y-12 pt-16 pb-6 lg:flex-row lg:items-center lg:py-16">
           <div>
-            <div className="flex items-center text-gray-900">
+            <Link href="/" className="flex items-center text-gray-900 hover:opacity-80 transition-opacity">
               <Logomark className="h-10 w-10 flex-none" />
               <div className="ml-4">
                 <p className="text-base font-semibold">Return Window</p>
                 <p className="mt-1 text-sm">Never miss a return deadline.</p>
               </div>
-            </div>
+            </Link>
             <nav className="mt-11 flex gap-8">
               <Link href="#features" className="text-sm text-gray-700 hover:text-emerald-600">
                 Features
@@ -56,6 +56,9 @@ export function Footer() {
         <div className="border-t border-gray-200 py-4">
           <p className="text-center text-xs text-gray-400">
             Some links on this site may be affiliate links. We may earn a commission if you make a purchase through these links, at no additional cost to you.
+          </p>
+          <p className="text-center text-xs text-gray-400 mt-2">
+            Icons by <a href="https://icons8.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600">Icons8</a>
           </p>
         </div>
       </Container>

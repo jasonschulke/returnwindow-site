@@ -74,7 +74,7 @@
 
 @theme inline {
   --animate-marquee: marquee var(--marquee-duration) linear infinite;
-  --animate-marquee-horizontal: marquee-horizontal 12s linear infinite;
+  --animate-marquee-horizontal: marquee-horizontal 20s linear infinite;
 
   @keyframes marquee {
     100% {
@@ -90,4 +90,34 @@
       transform: translateX(-50%);
     }
   }
+}
+
+/* Performance optimizations */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Content-visibility for below-fold sections - improves initial render */
+#features,
+#secondary-features,
+#pricing,
+#faqs {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
+/* GPU acceleration for animations */
+.animate-spin-slow,
+.animate-spin-reverse-slower,
+.animate-marquee-horizontal {
+  will-change: transform;
+  transform: translateZ(0);
 }

@@ -208,27 +208,27 @@ export function Hero() {
                 href="#"
                 className="inline-flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200"
               >
-                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-3.953 6.848c.062.003.124.005.187.005 6.627 0 12-5.373 12-12 0-1.005-.124-1.983-.357-2.918z" />
                 </svg>
-                Chrome Extension
-                <span className="rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium text-amber-700">
+                <span className="leading-none">Chrome Extension</span>
+                <span className="rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium leading-none text-amber-700">
                   Coming Soon
                 </span>
               </a>
             </div>
           </div>
 
-          <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
+          <div className="relative mt-16 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
             <BackgroundIllustration className="absolute top-4 left-1/2 h-[1026px] w-[1026px] -translate-x-1/3 mask-[linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
             <div className="-mx-4 px-4 sm:mx-0 lg:absolute lg:-inset-x-10 lg:-top-10 lg:-bottom-20 lg:px-0 lg:pt-10 xl:-bottom-32">
               <DashboardPreview />
             </div>
           </div>
 
-          <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
+          <div className="relative mt-8 lg:col-span-7 lg:mt-0 xl:col-span-6">
             <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
-              Works with 100+ retailers including
+              Works with thousands of retailers
             </p>
             <div className="relative mt-6 overflow-hidden">
               {/* Gradient masks for smooth fade effect */}
@@ -236,129 +236,25 @@ export function Hero() {
               <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-gray-50 to-transparent" />
 
               <div className="flex animate-marquee-horizontal">
-                {/* First set of 50 retailers */}
+                {/* Text-only retailer names for performance - no external images */}
                 {[
-                  { name: 'Amazon', domain: 'amazon.com' },
-                  { name: 'Walmart', domain: 'walmart.com' },
-                  { name: 'Apple', domain: 'apple.com' },
-                  { name: 'Target', domain: 'target.com' },
-                  { name: 'Home Depot', domain: 'homedepot.com' },
-                  { name: 'Best Buy', domain: 'bestbuy.com' },
-                  { name: 'Costco', domain: 'costco.com' },
-                  { name: "Lowe's", domain: 'lowes.com' },
-                  { name: "Macy's", domain: 'macys.com' },
-                  { name: "Kohl's", domain: 'kohls.com' },
-                  { name: 'Nordstrom', domain: 'nordstrom.com' },
-                  { name: 'Nike', domain: 'nike.com' },
-                  { name: 'Wayfair', domain: 'wayfair.com' },
-                  { name: 'Gap', domain: 'gap.com' },
-                  { name: 'Adidas', domain: 'adidas.com' },
-                  { name: 'Old Navy', domain: 'oldnavy.com' },
-                  { name: 'JCPenney', domain: 'jcpenney.com' },
-                  { name: 'Sephora', domain: 'sephora.com' },
-                  { name: 'Ulta', domain: 'ulta.com' },
-                  { name: 'IKEA', domain: 'ikea.com' },
-                  { name: 'Williams Sonoma', domain: 'williams-sonoma.com' },
-                  { name: 'Pottery Barn', domain: 'potterybarn.com' },
-                  { name: 'Crate & Barrel', domain: 'crateandbarrel.com' },
-                  { name: 'Bed Bath', domain: 'bedbathandbeyond.com' },
-                  { name: 'REI', domain: 'rei.com' },
-                  { name: 'Dick\'s', domain: 'dickssportinggoods.com' },
-                  { name: 'Foot Locker', domain: 'footlocker.com' },
-                  { name: 'Under Armour', domain: 'underarmour.com' },
-                  { name: 'Lululemon', domain: 'lululemon.com' },
-                  { name: 'H&M', domain: 'hm.com' },
-                  { name: 'Zara', domain: 'zara.com' },
-                  { name: 'Uniqlo', domain: 'uniqlo.com' },
-                  { name: 'Urban Outfitters', domain: 'urbanoutfitters.com' },
-                  { name: 'Anthropologie', domain: 'anthropologie.com' },
-                  { name: 'Free People', domain: 'freepeople.com' },
-                  { name: 'J.Crew', domain: 'jcrew.com' },
-                  { name: 'Banana Republic', domain: 'bananarepublic.com' },
-                  { name: "Levi's", domain: 'levi.com' },
-                  { name: 'The North Face', domain: 'thenorthface.com' },
-                  { name: 'Patagonia', domain: 'patagonia.com' },
-                  { name: 'Zappos', domain: 'zappos.com' },
-                  { name: 'Chewy', domain: 'chewy.com' },
-                  { name: 'Petco', domain: 'petco.com' },
-                  { name: 'PetSmart', domain: 'petsmart.com' },
-                  { name: 'Staples', domain: 'staples.com' },
-                  { name: 'Office Depot', domain: 'officedepot.com' },
-                  { name: 'GameStop', domain: 'gamestop.com' },
-                  { name: 'Newegg', domain: 'newegg.com' },
-                  { name: 'B&H Photo', domain: 'bhphotovideo.com' },
-                  { name: "Sam's Club", domain: 'samsclub.com' },
-                ].map((retailer) => (
-                  <div key={retailer.name} className="mx-3 flex shrink-0 items-center gap-1.5">
-                    <img
-                      src={`https://www.google.com/s2/favicons?sz=32&domain=${retailer.domain}`}
-                      alt={retailer.name}
-                      className="h-5 w-5 rounded"
-                    />
-                    <span className="whitespace-nowrap text-xs font-medium text-gray-700">{retailer.name}</span>
-                  </div>
+                  'Amazon', 'Walmart', 'Apple', 'Target', 'Best Buy', 'Costco',
+                  'Nordstrom', 'Nike', 'Wayfair', 'Sephora', 'IKEA', 'REI',
+                  'H&M', 'Zara', 'Lululemon', 'Patagonia', 'Home Depot', 'Chewy',
+                ].map((name) => (
+                  <span key={name} className="mx-4 shrink-0 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {name}
+                  </span>
                 ))}
                 {/* Duplicate set for seamless loop */}
                 {[
-                  { name: 'Amazon', domain: 'amazon.com' },
-                  { name: 'Walmart', domain: 'walmart.com' },
-                  { name: 'Apple', domain: 'apple.com' },
-                  { name: 'Target', domain: 'target.com' },
-                  { name: 'Home Depot', domain: 'homedepot.com' },
-                  { name: 'Best Buy', domain: 'bestbuy.com' },
-                  { name: 'Costco', domain: 'costco.com' },
-                  { name: "Lowe's", domain: 'lowes.com' },
-                  { name: "Macy's", domain: 'macys.com' },
-                  { name: "Kohl's", domain: 'kohls.com' },
-                  { name: 'Nordstrom', domain: 'nordstrom.com' },
-                  { name: 'Nike', domain: 'nike.com' },
-                  { name: 'Wayfair', domain: 'wayfair.com' },
-                  { name: 'Gap', domain: 'gap.com' },
-                  { name: 'Adidas', domain: 'adidas.com' },
-                  { name: 'Old Navy', domain: 'oldnavy.com' },
-                  { name: 'JCPenney', domain: 'jcpenney.com' },
-                  { name: 'Sephora', domain: 'sephora.com' },
-                  { name: 'Ulta', domain: 'ulta.com' },
-                  { name: 'IKEA', domain: 'ikea.com' },
-                  { name: 'Williams Sonoma', domain: 'williams-sonoma.com' },
-                  { name: 'Pottery Barn', domain: 'potterybarn.com' },
-                  { name: 'Crate & Barrel', domain: 'crateandbarrel.com' },
-                  { name: 'Bed Bath', domain: 'bedbathandbeyond.com' },
-                  { name: 'REI', domain: 'rei.com' },
-                  { name: 'Dick\'s', domain: 'dickssportinggoods.com' },
-                  { name: 'Foot Locker', domain: 'footlocker.com' },
-                  { name: 'Under Armour', domain: 'underarmour.com' },
-                  { name: 'Lululemon', domain: 'lululemon.com' },
-                  { name: 'H&M', domain: 'hm.com' },
-                  { name: 'Zara', domain: 'zara.com' },
-                  { name: 'Uniqlo', domain: 'uniqlo.com' },
-                  { name: 'Urban Outfitters', domain: 'urbanoutfitters.com' },
-                  { name: 'Anthropologie', domain: 'anthropologie.com' },
-                  { name: 'Free People', domain: 'freepeople.com' },
-                  { name: 'J.Crew', domain: 'jcrew.com' },
-                  { name: 'Banana Republic', domain: 'bananarepublic.com' },
-                  { name: "Levi's", domain: 'levi.com' },
-                  { name: 'The North Face', domain: 'thenorthface.com' },
-                  { name: 'Patagonia', domain: 'patagonia.com' },
-                  { name: 'Zappos', domain: 'zappos.com' },
-                  { name: 'Chewy', domain: 'chewy.com' },
-                  { name: 'Petco', domain: 'petco.com' },
-                  { name: 'PetSmart', domain: 'petsmart.com' },
-                  { name: 'Staples', domain: 'staples.com' },
-                  { name: 'Office Depot', domain: 'officedepot.com' },
-                  { name: 'GameStop', domain: 'gamestop.com' },
-                  { name: 'Newegg', domain: 'newegg.com' },
-                  { name: 'B&H Photo', domain: 'bhphotovideo.com' },
-                  { name: "Sam's Club", domain: 'samsclub.com' },
-                ].map((retailer) => (
-                  <div key={`${retailer.name}-dup`} className="mx-3 flex shrink-0 items-center gap-1.5">
-                    <img
-                      src={`https://www.google.com/s2/favicons?sz=32&domain=${retailer.domain}`}
-                      alt={retailer.name}
-                      className="h-5 w-5 rounded"
-                    />
-                    <span className="whitespace-nowrap text-xs font-medium text-gray-700">{retailer.name}</span>
-                  </div>
+                  'Amazon', 'Walmart', 'Apple', 'Target', 'Best Buy', 'Costco',
+                  'Nordstrom', 'Nike', 'Wayfair', 'Sephora', 'IKEA', 'REI',
+                  'H&M', 'Zara', 'Lululemon', 'Patagonia', 'Home Depot', 'Chewy',
+                ].map((name) => (
+                  <span key={`${name}-dup`} className="mx-4 shrink-0 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {name}
+                  </span>
                 ))}
               </div>
             </div>

@@ -25,13 +25,19 @@ export const metadata: Metadata = {
     'return deadline tracker',
     'return window reminder',
     'purchase return tracker',
-    'Amazon return deadline',
+    'Amazon return policy',
+    'Target return policy',
+    'Walmart return policy',
+    'Costco return policy',
+    'Best Buy return policy',
+    'how long to return Amazon',
     'online shopping returns',
     'return policy tracker',
-    'email receipt tracker',
     'return reminder app',
     'missed return deadline',
     'track online purchases',
+    'when does my return expire',
+    'return deadline reminder',
   ],
   authors: [{ name: 'Return Window' }],
   creator: 'Return Window',
@@ -86,6 +92,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={clsx('bg-gray-50 antialiased', inter.variable)}>
       <head>
+        {/* Preconnect to external domains for performance */}
+        <link rel="preconnect" href="https://us.i.posthog.com" />
+        <link rel="dns-prefetch" href="https://us.i.posthog.com" />
+
         {/* PostHog Analytics */}
         <Script id="posthog-init" strategy="afterInteractive">
           {`
@@ -137,34 +147,66 @@ export default function RootLayout({
               mainEntity: [
                 {
                   '@type': 'Question',
-                  name: 'How does Return Window work?',
+                  name: 'How long do I have to return something to Amazon?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Forward your order confirmation emails to track@returnwindow.app. We automatically detect the retailer, extract order details, and send you reminders at 7 days, 3 days, and 1 day before your return window closes.',
+                    text: "Amazon's standard return policy is 30 days from delivery for most items. Electronics have shorter windows (15 days), while holiday purchases often have extended returns until January 31st.",
                   },
                 },
                 {
                   '@type': 'Question',
-                  name: 'Is Return Window free?',
+                  name: "What is Target's return policy?",
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Yes! Return Window is free for your first 10 purchases. Paid plans start at $1/month for regular shoppers who need to track more purchases.',
+                    text: 'Target offers a 90-day return window for most items. RedCard holders get 120 days. Electronics have a 30-day window. Target-owned brands like Cat & Jack have a 1-year return policy.',
                   },
                 },
                 {
                   '@type': 'Question',
-                  name: 'Which retailers does Return Window support?',
+                  name: "What is Walmart's return policy?",
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Return Window works with 100+ retailers including Amazon, Target, Walmart, Best Buy, Apple, Nike, Nordstrom, Wayfair, Costco, and many more.',
+                    text: "Walmart's standard return policy is 90 days for most items. Electronics and luxury items have a 30-day window. Wireless phones must be returned within 14 days.",
                   },
                 },
                 {
                   '@type': 'Question',
-                  name: 'Is my data secure?',
+                  name: "What is Costco's return policy?",
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Yes. All purchase details are encrypted with AES-256-GCM before storage. We cannot see what you bought - only you can decrypt your data through your personal dashboard.',
+                    text: 'Costco has one of the most generous return policies—most items can be returned anytime with no time limit. Exceptions include electronics (90 days), diamonds over 1 carat, cigarettes, and alcohol.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: "What is Best Buy's return policy?",
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: "Best Buy's standard return window is 15 days. My Best Buy Plus and Total members get 60 days. Cell phones and devices with carrier contracts have a 14-day window.",
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'How do I track my online purchase return deadlines?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: "Forward your order confirmation email to track@returnwindow.app. We'll automatically calculate when your return window closes and send you reminders before the deadline. No app download required.",
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Is there an app to remind me about return deadlines?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Return Window is an email-based return deadline tracker that requires no app download. Forward your receipts and receive automatic reminders. View all purchases in a web dashboard.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Is Return Window free to use?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Yes! Return Window is free for your first 10 purchases with no time limit. Paid plans start at $1/month to track up to 50 purchases. We never show ads or sell your data.',
                   },
                 },
               ],

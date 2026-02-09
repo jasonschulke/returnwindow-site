@@ -16,7 +16,7 @@ const plans = [
     featured: false,
     price: { monthly: '$0', annualMonthly: '$0', annualTotal: '$0' },
     description: 'Perfect for trying out Return Window.',
-    limit: '10 purchases',
+    limit: 'Track 10 purchases',
     limitNote: 'total',
     button: {
       label: 'Get Started',
@@ -34,7 +34,7 @@ const plans = [
     featured: true,
     price: { monthly: '$1', annualMonthly: '$0.83', annualTotal: '$10' },
     description: 'Lock in founding member pricing forever.',
-    limit: '50 purchases',
+    limit: 'Track 50 purchases',
     limitNote: 'per month',
     isFoundingMember: true,
     button: {
@@ -55,7 +55,7 @@ const plans = [
     featured: false,
     price: { monthly: '$10', annualMonthly: '$8.33', annualTotal: '$100' },
     description: 'For power shoppers and families.',
-    limit: '500 purchases',
+    limit: 'Track 500 purchases',
     limitNote: 'per month',
     button: {
       label: 'Start Premium',

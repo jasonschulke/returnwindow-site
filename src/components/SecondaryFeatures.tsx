@@ -127,7 +127,7 @@ export function SecondaryFeatures() {
           {features.map((feature) => (
             <li
               key={feature.name}
-              className="rounded-2xl border border-gray-200 p-8"
+              className="rounded-2xl border border-gray-200 p-8 transition-all duration-200 hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-50"
             >
               <feature.icon className="h-8 w-8 text-emerald-600" />
               <h3 className="mt-6 font-semibold text-gray-900">
