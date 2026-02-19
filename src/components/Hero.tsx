@@ -152,12 +152,33 @@ function DashboardPreview() {
 export function Hero() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) {
-      // In production, this would submit to your backend
+    if (!email) return
+
+    setLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('https://schulke-return_window_dashboard.web.val.run/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'landing_page' }),
+      })
+
+      if (!response.ok) {
+        const data = await response.json()
+        throw new Error(data.error || 'Failed to join waitlist')
+      }
+
       setSubmitted(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -184,20 +205,24 @@ export function Hero() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
-                    className="w-full rounded-lg border border-gray-300 bg-white py-3 pl-10 pr-4 text-gray-900 placeholder:text-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    disabled={loading}
+                    className="w-full rounded-lg border border-gray-300 bg-white py-3 pl-10 pr-4 text-gray-900 placeholder:text-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 disabled:opacity-50"
                   />
                 </div>
-                <Button type="submit" color="emerald" className="flex-none">
-                  Get Started Free
+                <Button type="submit" color="emerald" className="flex-none" disabled={loading}>
+                  {loading ? 'Joining...' : 'Join Waitlist'}
                 </Button>
               </form>
             ) : (
               <div className="mt-8 rounded-lg bg-emerald-50 p-4 text-emerald-800">
-                <p className="font-medium">Check your inbox!</p>
+                <p className="font-medium">You're on the list!</p>
                 <p className="mt-1 text-sm text-emerald-700">
-                  We've sent you an email with instructions to get started.
+                  We'll notify you when Return Window is ready for you.
                 </p>
               </div>
+            )}
+            {error && (
+              <p className="mt-2 text-sm text-red-600">{error}</p>
             )}
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">

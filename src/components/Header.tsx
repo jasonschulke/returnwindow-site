@@ -147,7 +147,7 @@ export function Header() {
                               Dashboard
                             </Button>
                             <Button href="#get-started" color="emerald" className="w-full justify-center">
-                              Get Started Free
+                              Join Waitlist
                             </Button>
                           </div>
                         </PopoverPanel>
@@ -162,7 +162,7 @@ export function Header() {
                 Dashboard
               </Button>
               <Button href="#get-started" color="emerald">
-                Get Started Free
+                Join Waitlist
               </Button>
             </div>
           </div>
