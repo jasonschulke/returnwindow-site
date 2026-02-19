@@ -163,7 +163,7 @@ export function Hero() {
     setError('')
 
     try {
-      const response = await fetch('https://schulke-return_window_dashboard.web.val.run/api/waitlist', {
+      const response = await fetch('https://dashboard.returnwindow.app/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, source: 'landing_page' }),
