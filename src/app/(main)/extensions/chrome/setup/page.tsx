@@ -7,9 +7,86 @@ import { Container } from '@/components/Container'
 const TRACK_EMAIL = 'track@returnwindow.app'
 
 // Filter criteria for order confirmation emails
+// Comprehensive list covering 50+ major retailers
 const FILTER_CRITERIA = {
-  from: 'ship-confirm@amazon.com OR orders@target.com OR help@walmart.com OR BestBuyInfo@emailinfo.bestbuy.com OR no_reply@email.apple.com OR Nike@official.nike.com OR nordstrom@e.nordstrom.com OR orders@wayfair.com OR orders@costco.com',
-  subject: '"order confirmation" OR "order confirmed" OR "thanks for your order" OR "your order has shipped" OR "shipping confirmation"',
+  // Major retailers - email addresses that send order confirmations
+  from: [
+    // Mega retailers
+    'ship-confirm@amazon.com',
+    'auto-confirm@amazon.com',
+    'orders@target.com',
+    'help@walmart.com',
+    'orders@costco.com',
+    // Electronics
+    'BestBuyInfo@emailinfo.bestbuy.com',
+    'no_reply@email.apple.com',
+    'order-update@amazon.com',
+    'noreply@newegg.com',
+    'orders@bhphoto.com',
+    // Fashion & Apparel
+    'Nike@official.nike.com',
+    'nordstrom@e.nordstrom.com',
+    'noreply@oldnavy.com',
+    'noreply@gap.com',
+    'noreply@bananarepublic.com',
+    'email@s.zappos.com',
+    'orders@macys.com',
+    'noreply@kohls.com',
+    'hello@lululemon.com',
+    'info@e.underarmour.com',
+    'noreply@adidas.com',
+    'orders@footlocker.com',
+    'noreply@jcrew.com',
+    'noreply@hm.com',
+    'noreply@zara.com',
+    'noreply@uniqlo.com',
+    'noreply@asos.com',
+    'noreply@urbanoutfitters.com',
+    'noreply@anthropologie.com',
+    'info@freepeople.com',
+    // Home & Furniture
+    'orders@wayfair.com',
+    'noreply@westelm.com',
+    'noreply@potterybarn.com',
+    'noreply@crateandbarrel.com',
+    'noreply@cb2.com',
+    'noreply@ikea.com',
+    'noreply@homedepot.com',
+    'noreply@lowes.com',
+    'noreply@bedbathandbeyond.com',
+    'noreply@williams-sonoma.com',
+    // Pet & Outdoor
+    'noreply@chewy.com',
+    'noreply@petco.com',
+    'noreply@petsmart.com',
+    'noreply@rei.com',
+    'noreply@backcountry.com',
+    'noreply@dickssportinggoods.com',
+    // Beauty & Health
+    'noreply@sephora.com',
+    'noreply@ulta.com',
+    'noreply@bathandbodyworks.com',
+    // Specialty
+    'orders@etsy.com',
+    'noreply@ebay.com',
+    'noreply@gamestop.com',
+    'noreply@booksamillion.com',
+  ].join(' OR '),
+
+  // Keywords that appear in order confirmation subjects/body
+  // Avoid special characters like # & * that Gmail warns about
+  hasTheWords: '"order confirmation" OR "order confirmed" OR "thanks for your order" OR "thank you for your order" OR "your order has been" OR "order receipt" OR "purchase confirmation" OR "order number" OR "shipping confirmation" OR "has shipped"',
+
+  // Subject line patterns (alternative to hasTheWords)
+  subject: '"order confirmation" OR "order confirmed" OR "thanks for your order" OR "your order has shipped" OR "shipping confirmation" OR "your order is on the way"',
+}
+
+// Build Gmail filter URL with pre-populated fields
+function buildGmailFilterUrl() {
+  const params = new URLSearchParams()
+  params.set('from', FILTER_CRITERIA.from)
+  params.set('has', FILTER_CRITERIA.hasTheWords)
+  return `https://mail.google.com/mail/u/0/#create-filter/${params.toString()}`
 }
 
 function CopyIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -181,13 +258,18 @@ export default function GmailSetup() {
                         </div>
                       </li>
                       <li>Click <strong>"Next"</strong> and then <strong>"Proceed"</strong></li>
-                      <li>Gmail will send a verification email to confirm the address</li>
+                      <li>
+                        <strong>Open the Return Window extension</strong> - you'll see a "Confirm Forwarding" button
+                      </li>
+                      <li>
+                        Click the button to confirm Gmail forwarding, then continue to Step 2
+                      </li>
                     </ol>
 
-                    <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
-                      <p className="text-sm text-amber-800">
-                        <strong>Note:</strong> The verification email is sent to Return Window, not to you.
-                        The address will be verified automatically within a few minutes.
+                    <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4">
+                      <p className="text-sm text-emerald-800">
+                        <strong>How it works:</strong> Gmail sends a verification email to Return Window.
+                        The confirmation link will appear in the Chrome extension popup so you can complete the setup.
                       </p>
                     </div>
                   </div>
@@ -216,27 +298,45 @@ export default function GmailSetup() {
                   </h2>
                   <div className="mt-4 space-y-4 text-gray-600">
                     <p>
-                      Now create a filter to automatically forward order confirmation emails:
+                      Click this button to open Gmail with the filter pre-filled:
                     </p>
-                    <ol className="list-inside list-decimal space-y-3 pl-2">
-                      <li>
-                        Open{' '}
-                        <a
-                          href="https://mail.google.com/mail/u/0/#settings/filters"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-medium text-emerald-600 hover:text-emerald-500"
-                        >
-                          Gmail Settings → Filters
-                        </a>
-                      </li>
-                      <li>Click <strong>"Create a new filter"</strong></li>
-                      <li>
-                        In the <strong>"From"</strong> field, paste this (includes major retailers):
-                        <CopyButton text={FILTER_CRITERIA.from} label="From field" />
-                      </li>
-                      <li>Click <strong>"Create filter"</strong> (ignore the warning about not all emails matching)</li>
-                    </ol>
+
+                    <a
+                      href={buildGmailFilterUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-6 py-3 font-medium text-white transition-colors hover:bg-gray-800"
+                    >
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                      </svg>
+                      Open Gmail & Create Filter
+                    </a>
+
+                    <p className="text-sm text-gray-500">
+                      This will open Gmail with 50+ retailer addresses and order keywords pre-filled.
+                    </p>
+
+                    <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+                      <p className="text-sm text-blue-800">
+                        <strong>How this works:</strong> The filter catches emails from known retailers
+                        that contain order-related keywords like "order confirmation" or "your order".
+                        This ensures only order confirmations are forwarded, not marketing emails.
+                      </p>
+                    </div>
+
+                    <details className="rounded-lg border border-gray-200 bg-gray-50">
+                      <summary className="cursor-pointer px-4 py-3 text-sm font-medium text-gray-700">
+                        Or copy the filter values manually
+                      </summary>
+                      <div className="border-t border-gray-200 px-4 py-3">
+                        <CopyButton text={FILTER_CRITERIA.from} label="From" />
+                        <CopyButton text={FILTER_CRITERIA.hasTheWords} label="Has the words" />
+                      </div>
+                    </details>
                   </div>
 
                   <div className="mt-6 flex gap-3">
@@ -382,12 +482,17 @@ export default function GmailSetup() {
               Want to track more retailers?
             </h3>
             <p className="mt-2 text-gray-600">
-              The filter above covers major retailers. You can add more by editing the filter
-              and adding more email addresses to the "From" field, separated by <code className="text-sm">OR</code>.
+              The filter above covers 50+ major retailers. To add more:
             </p>
-            <p className="mt-3 text-sm text-gray-500">
-              Common additions: orders@rei.com, orders@nike.com, noreply@chewy.com,
-              customerservice@zappos.com, orders@ikea.com
+            <ol className="mt-3 list-inside list-decimal space-y-2 text-gray-600">
+              <li>Go to Gmail Settings → Filters and blocked addresses</li>
+              <li>Find your Return Window filter and click "edit"</li>
+              <li>Add more email addresses to the "From" field, separated by <code className="rounded bg-gray-200 px-1 text-sm">OR</code></li>
+            </ol>
+            <p className="mt-4 text-sm text-gray-500">
+              <strong>Tip:</strong> To find a retailer's order email, look at a past order confirmation
+              and check the "From" address. You can also forward individual emails manually to{' '}
+              <code className="text-emerald-600">{TRACK_EMAIL}</code> anytime.
             </p>
           </div>
 
